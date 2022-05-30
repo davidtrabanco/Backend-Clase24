@@ -3,8 +3,8 @@ import config from "../../../config.js";
 export const loginCheck = (req, res, next) =>{
 
     //si estoy recibiendo un registro continuo el proceso sin validar:
-    if(req.url == "/register") next();
-
+    if(req.url == "/register"){ return next();}
+    
     //Si existe una cookie
     if( req.session.login ){
 
@@ -26,7 +26,6 @@ export const loginCheck = (req, res, next) =>{
         }
 
     }else{
-
         console.log(`Acceso BLOQUEADO desde ${req.hostname} a url:${req.url}`);
 
         //Envío la página de registro:
